@@ -1,0 +1,6 @@
+tox
+coverage
+nose
+nose-exclude
+mock
+responses
