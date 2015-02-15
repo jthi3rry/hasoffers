@@ -114,3 +114,56 @@ CONVERSION_FINDALL_SUCCESS = {
                 }
             }""",
 }
+
+
+AFFILIATE_AFFILIATE_FINDBYID_SUCCESS = {
+    "method": responses.GET,
+    "match_querystring": True,
+    "url": "https://api.hasoffers.com/v3/Affiliate_Affiliate.json?Method=findById&NetworkId=id&api_key=key",
+    "status": 200,
+    "content_type": "application/json",
+    "body": """{
+                "request": {
+                    "NetworkId": "id",
+                    "Target": "Affiliate_Affiliate",
+                    "Service": "HasOffers",
+                    "Format": "json",
+                    "Version": "3",
+                    "api_key": "key",
+                    "Method": "findById"
+                },
+                "response": {
+                    "status": 1,
+                    "data": {
+                        "Affiliate": {
+                            "status": "active",
+                            "payment_method": "check",
+                            "ref_id": null,
+                            "affiliate_tier_id": null,
+                            "id": "2",
+                            "payment_terms": "",
+                            "city": "Auckland",
+                            "address2": "",
+                            "zipcode": "0000",
+                            "other": null,
+                            "method_data": null,
+                            "account_manager_id": "2",
+                            "website": null,
+                            "fax": "",
+                            "address1": "Affiliate Street",
+                            "company": "Affiliate",
+                            "wants_alerts": "1",
+                            "date_added": "2014-06-12 06:26:25",
+                            "phone": "+6400000000",
+                            "country": "NZ",
+                            "region": "Auckland",
+                            "w9_filed": "0",
+                            "modified": "2014-12-14 05:56:24"
+                        }
+                    },
+                    "errorMessage": null,
+                    "errors": [],
+                    "httpStatus": 200
+                }
+            }"""
+}

@@ -36,10 +36,15 @@ Usage Examples
 Instantiate a client with your network token and network id::
 
 
-    from hasoffers import Client
+    from hasoffers import BrandClient
 
-    client = Client("networktoken", "networkid")
+    client = BrandClient("networktoken", "networkid")
 
+Or for the Affiliate API::
+
+    from hasoffers import AffiliateClient
+
+    client = AffiliateClient("api_key", "network_id")
 
 The general usage to call an API method is ``client.request(target, method, **params)``.
 
@@ -126,6 +131,10 @@ All contributions and comments are welcome.
 
 Change Log
 ----------
+
+v0.2.0
+~~~~~~
+* Add support for Affiliate API. Thanks `jarradh <https://github.com/jarradh>`_
 
 v0.1.1
 ~~~~~~

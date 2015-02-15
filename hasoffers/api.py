@@ -1,6 +1,6 @@
 import requests
 
-__all__ = ['Response', 'Client']
+__all__ = ['Response', 'Client', 'BrandClient', 'AffiliateClient']
 
 
 class Response(object):
@@ -18,19 +18,12 @@ class Response(object):
         self.success = self.status > 0
 
 
-class Client(object):
+class BaseClient(object):
 
     ENDPOINT = "https://api.hasoffers.com/v3/"
 
-    def __init__(self, network_token, network_id):
-        """
-        Constructor
-
-        :param network_token: hasoffers network token
-        :param network_id: hasoffers network id
-        """
-        self.network_token = network_token
-        self.network_id = network_id
+    def get_auth_params(self):  # pragma: nocover
+        raise NotImplementedError()
 
     def _prepare_params(self, **kwargs):
         """
@@ -67,6 +60,42 @@ class Client(object):
         :return: instance of response_class
         """
         params = self._prepare_params(**kwargs)
-        params.update({"NetworkToken": self.network_token, "NetworkId": self.network_id, "Method": method})
+        params.update({"Method": method})
+        params.update(self.get_auth_params())
         response = requests.get("{}{}.json".format(self.ENDPOINT, target), params=params)
         return response_class(response.json())
+
+
+class BrandClient(BaseClient):
+
+    def __init__(self, network_token, network_id):
+        """
+        Constructor
+
+        :param network_token: hasoffers network token
+        :param network_id: hasoffers network id
+        """
+        self.network_token = network_token
+        self.network_id = network_id
+
+    def get_auth_params(self):
+        return {"NetworkToken": self.network_token, "NetworkId": self.network_id}
+
+# Backward compatibility
+Client = BrandClient
+
+
+class AffiliateClient(BaseClient):
+
+    def __init__(self, api_key, network_id):
+        """
+        Constructor
+
+        :param api_key: hasoffers affiliate api key
+        :param network_id: hasoffers network id
+        """
+        self.api_key = api_key
+        self.network_id = network_id
+
+    def get_auth_params(self):
+        return {"api_key": self.api_key, "NetworkId": self.network_id}
