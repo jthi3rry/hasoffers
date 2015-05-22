@@ -49,7 +49,7 @@ class BaseClient(object):
                 params.update({param: value})
         return params
 
-    def request(self, target, method, response_class=Response, verb='get', **kwargs):
+    def request(self, target, method, response_class=Response, verb='GET', **kwargs):
         """
         Perform a call to the API endpoint
 
@@ -63,8 +63,7 @@ class BaseClient(object):
         params = self._prepare_params(**kwargs)
         params.update({"Method": method})
         params.update(self.get_auth_params())
-        call = getattr(requests, verb.lower(), getattr(requests, 'get'))
-        response = call("{}{}.json".format(self.ENDPOINT, target), params=params)
+        response = requests.request(verb, "{}{}.json".format(self.ENDPOINT, target), params=params)
         return response_class(response.json())
 
 
