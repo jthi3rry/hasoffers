@@ -8,11 +8,11 @@ HasOffers
 .. image:: https://pypip.in/format/hasoffers/badge.svg
     :target: https://pypi.python.org/pypi/hasoffers/
 
-.. image:: https://travis-ci.org/OohlaLabs/hasoffers.svg?branch=master
-    :target: https://travis-ci.org/OohlaLabs/hasoffers
+.. image:: https://travis-ci.org/jthi3rry/hasoffers.svg?branch=master
+    :target: https://travis-ci.org/jthi3rry/hasoffers
 
-.. image:: https://coveralls.io/repos/OohlaLabs/hasoffers/badge.png?branch=master
-    :target: https://coveralls.io/r/OohlaLabs/hasoffers
+.. image:: https://coveralls.io/repos/jthi3rry/hasoffers/badge.png?branch=master
+    :target: https://coveralls.io/r/jthi3rry/hasoffers
 
 .. image:: https://pypip.in/py_versions/hasoffers/badge.svg
     :target: https://pypi.python.org/pypi/hasoffers/
@@ -131,6 +131,10 @@ All contributions and comments are welcome.
 
 Change Log
 ----------
+
+v0.2.1
+~~~~~~
+* Add ability to specify HTTP methods (verbs) when making a request. Thanks `jeffkayser <https://github.com/jeffkayser>`_
 
 v0.2.0
 ~~~~~~
